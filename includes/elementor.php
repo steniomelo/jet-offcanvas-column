@@ -157,6 +157,23 @@ class Elementor {
 								return;
 							}
 						}
+
+						// if element diractly has required class - open offcanvas
+						if ( event.target.classList.contains( 'offcanvas-expand' ) ) {
+							offcanv.classList.add( 'is-active' );
+							parent.classList.add( 'is-active' );
+							return;
+						}
+
+						// if its button inside element with required class - also open offcanvas
+						if ( 'BUTTON' === event.target.tagName ) {
+							let parentTarget = event.target.closest( '.offcanvas-expand' );
+							if ( parentTarget ) {
+								offcanv.classList.add( 'is-active' );
+								parent.classList.add( 'is-active' );
+								return;
+							}
+						}
 					} );
 
 				});
